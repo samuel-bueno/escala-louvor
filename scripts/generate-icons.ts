@@ -1,13 +1,13 @@
 /**
- * Gera os ícones PNG do app instalado (PWA / tela inicial / favicon) com a marca do app
- * (/public/brand/mark.svg: branca, com transparência) sobre fundo tinta. Requer sharp.
+ * Gera os ícones PNG do app instalado (PWA / tela inicial / favicon) com o LOGO COMPLETO da ADNO
+ * (/public/brand/adno-logo.png: branco, com transparência) sobre fundo tinta. Requer sharp.
  * Rode após mudar a marca: npm run icons
  */
 import { mkdirSync } from "node:fs";
 import sharp from "sharp";
 
 const INK = "#1b1a18";
-const logo = "public/brand/mark.svg";
+const logo = "public/brand/adno-logo.png";
 
 /** Quadrado cheio em tinta com o logo centralizado. `scale` = largura do logo / lado. */
 async function icon(size: number, scale: number, file: string) {

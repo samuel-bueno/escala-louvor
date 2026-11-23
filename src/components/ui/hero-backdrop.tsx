@@ -5,11 +5,11 @@ import { cn } from "@/lib/cn";
 /**
  * Destaque com fundo escuro para a "próxima escala" do músico.
  * Com foto (APP.heroImage): foto em preto e branco sob um véu escuro, para o texto branco sempre ler bem.
- * Sem foto: fundo tinta com a marca do app (nota musical) como marca d'água.
+ * Sem foto: fundo tinta com a pomba da ADNO como marca d'água.
  * Texto sempre claro, nos dois temas.
  */
 export function HeroBackdrop({ children, className }: { children: ReactNode; className?: string }) {
-  const watermark = "url(/brand/mark.svg) right 8% center / auto 140% no-repeat";
+  const dove = "url(/brand/adno-pomba.png) right 8% center / 62% auto no-repeat";
   return (
     <div className={cn("relative isolate overflow-hidden bg-[#1b1a18] text-white", className)}>
       {APP.heroImage ? (
@@ -21,7 +21,7 @@ export function HeroBackdrop({ children, className }: { children: ReactNode; cla
       ) : (
         <>
           <div aria-hidden className="absolute inset-0 -z-20 bg-[radial-gradient(120%_140%_at_85%_20%,#3a342d_0%,#1b1a18_60%)]" />
-          <span aria-hidden className="absolute inset-0 -z-10 bg-white opacity-[0.07]" style={{ mask: watermark, WebkitMask: watermark }} />
+          <span aria-hidden className="absolute inset-0 -z-10 bg-white opacity-[0.07]" style={{ mask: dove, WebkitMask: dove }} />
         </>
       )}
       {children}

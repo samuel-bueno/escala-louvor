@@ -1,5 +1,41 @@
 # Escala Louvor
 
+[![CI](https://github.com/samuel-bueno/escala-louvor/actions/workflows/ci.yml/badge.svg)](https://github.com/samuel-bueno/escala-louvor/actions/workflows/ci.yml)
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6)
+[![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green)](LICENSE)
+
+App web (PWA) que organiza **escalas, disponibilidade e repertório** do ministério de louvor da ADNO (Assembleia de Deus, Nova Odessa · Jardim Minezotta).
+
+**O problema:** montar a escala à mão exige cruzar a disponibilidade, as funções e o rodízio de muita gente, e o repertório de cada culto acaba espalhado.
+**A solução:** um app em que a liderança gera a escala com um clique (respeitando disponibilidade, funções e rodízio), revisa, publica, e cada músico confirma ou pede troca pelo celular.
+
+| Início da liderança | Montagem da escala |
+|---|---|
+| ![Início da liderança](docs/screenshots/desktop-inicio.png) | ![Editor de escala](docs/screenshots/desktop-escala.png) |
+
+| Agenda | Músicas | Celular | Login |
+|---|---|---|---|
+| ![Agenda](docs/screenshots/desktop-agenda.png) | ![Músicas](docs/screenshots/desktop-musicas.png) | ![Tela do ministro no celular](docs/screenshots/mobile-musico.png) | ![Login no celular](docs/screenshots/mobile-login.png) |
+
+> Screenshots geradas com os dados fictícios do seed (`npm run setup`).
+
+## Destaques
+
+- **Geração automática da escala** com filtros (disponibilidade, função, conflito, limite mensal) e pontuação para rodízio justo; cada escolha mostra o "por quê" e nada é salvo sem prévia.
+- **Permissões por área** (líder dos músicos, líder dos vocais, membro) conferidas no servidor, com testes de integração que chamam as Server Actions de verdade.
+- **Login com senha ou biometria** (passkeys/WebAuthn), convite por link e redefinição de senha por link de uso único.
+- **PWA** instalável no celular, com página offline.
+- **Segurança:** CSP com nonce, isolamento por organização em todas as consultas, rate limit de login.
+- **Qualidade:** TypeScript estrito, testes com Vitest e CI no GitHub Actions (lint, tipos, testes e build a cada push).
+
+## Como o projeto foi construído
+
+Desenvolvi o Escala Louvor para resolver uma necessidade real da minha igreja e usei IA (Claude) como ferramenta de desenvolvimento: para acelerar a escrita de código, revisar decisões e testar fluxos. As decisões de produto, as regras de negócio e a validação com a equipe são minhas, e reviso o que entra no projeto para conseguir explicar cada parte.
+
+---
+
+
 Aplicativo (PWA) para organizar escalas de ministros e músicos, disponibilidade e repertório de um ministério de louvor. Interface em pt-BR, fuso `America/Sao_Paulo`.
 
 > **Dados de demonstração são FICTÍCIOS** (nomes, e-mails `.test`, músicas, artistas e links `example.com`).
@@ -109,7 +145,7 @@ Em qualquer posição da escala, "Convidado (músico de fora)" preenche a vaga s
 O músico toca em **Preciso trocar** na própria escala, pode sugerir um colega livre e com a mesma função (a lista só mostra nomes) e escrever um motivo. A liderança da área vê "pediu troca · sugeriu X" e aceita com um toque (**Aceitar sugestão**): a pessoa sugerida assume a posição e passa a aguardar confirmação. Reaproveita o fluxo de recusa (avisos, Home e publicação continuam funcionando). Servidor: `respondToSlotAction`, `listSwapCandidatesAction`, `acceptSwapSuggestionAction` (migração `0004`).
 
 ### Foto de fundo (tela do músico)
-O destaque da "próxima escala" usa fundo escuro com a marca do app. Para usar uma foto (com direito de uso): coloque o arquivo em `public/brand/` e defina `heroImage` em `src/config/app.ts` (ex.: `"/brand/foto.jpg"`). A foto vira preto e branco sob um véu escuro para o texto sempre ler bem.
+O destaque da "próxima escala" usa fundo escuro com a pomba da ADNO. Para usar uma foto da igreja (pessoas adorando): coloque o arquivo em `public/brand/` e defina `heroImage` em `src/config/app.ts` (ex.: `"/brand/adoracao.jpg"`). A foto vira preto e branco sob um véu escuro para o texto sempre ler bem.
 
 ### Publicação e mudanças entre lideranças
 - Escala **totalmente vazia nunca é publicada** (servidor). Parcial: pede confirmação e lista o que falta.
@@ -127,7 +163,7 @@ O destaque da "próxima escala" usa fundo escuro com a marca do app. Para usar u
 `DATABASE_URL` = `libsql://NOME-DO-BANCO-SUA-ORG.turso.io` (um endereço só, sem aspas nem espaços) e `DATABASE_AUTH_TOKEN` = token do Turso (`turso db tokens create NOME-DO-BANCO`). Marque as duas para **Production e Preview** e faça Redeploy depois de mudar. O app confere as duas ao iniciar (`src/server/db/config.ts`): se houver dois endereços colados, espaço, aspas, falta do token ou variável ausente na Vercel, o build falha com uma mensagem clara (sem mostrar o valor), em vez de cair em silêncio para um arquivo local que perde os dados.
 
 ## Links de convite, senha e escala
-Os links são montados com o endereço em que a administração está usando o app (não dependem da variável `APP_URL`), então continuam certos se o domínio mudar. `APP_URL` só vale como reserva e precisa ser **apenas o domínio**, ex.: `https://seu-app.vercel.app` (sem barra no meio, sem caminho, um único endereço).
+Os links são montados com o endereço em que a administração está usando o app (não dependem da variável `APP_URL`), então continuam certos se o domínio mudar. `APP_URL` só vale como reserva e precisa ser **apenas o domínio**, ex.: `https://adno-louvor.vercel.app` (sem barra no meio, sem caminho, um único endereço).
 
 ## Segurança
 - **CSP com nonce** por requisição em `src/proxy.ts`: scripts só `'self'` + nonce (`strict-dynamic`), sem `unsafe-inline`/`unsafe-eval` em produção, `frame-ancestors 'none'`, `object-src 'none'`, sem terceiros. `style-src` mantém `'unsafe-inline'` porque o app usa `style=""` (tamanhos de avatar/barras); estilo inline não executa código. Verificado em `next start`: página interativa, 13/13 scripts com nonce e nenhuma violação.

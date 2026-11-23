@@ -35,17 +35,17 @@ describe("base64url", () => {
 
 describe("validAppUrl", () => {
   it("aceita um endereço normal e devolve só a origem", () => {
-    expect(validAppUrl("https://escala-louvor.vercel.app/")).toBe("https://escala-louvor.vercel.app");
+    expect(validAppUrl("https://adno-louvor.vercel.app/")).toBe("https://adno-louvor.vercel.app");
     expect(validAppUrl("http://localhost:3000")).toBe("http://localhost:3000");
   });
   it("rejeita dois endereços colados (o caso do link de convite quebrado)", () => {
-    expect(validAppUrl("https://escala-louvor.vercel.apphttps//escala-louvor-demo.vercel.app")).toBeNull();
+    expect(validAppUrl("https://adno-louvor.vercel.apphttps//escalas-adno-minezota.vercel.app")).toBeNull();
     expect(validAppUrl("https://a.comhttps://b.com")).toBeNull();
   });
   it("rejeita vazio, sem protocolo e protocolos estranhos", () => {
     expect(validAppUrl("")).toBeNull();
     expect(validAppUrl(undefined)).toBeNull();
-    expect(validAppUrl("escala-louvor.vercel.app")).toBeNull();
+    expect(validAppUrl("adno-louvor.vercel.app")).toBeNull();
     expect(validAppUrl("javascript:alert(1)")).toBeNull();
   });
 });

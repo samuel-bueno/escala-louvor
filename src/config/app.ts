@@ -11,8 +11,8 @@ export const APP = {
   locale: "pt-BR",
   timezone: "America/Sao_Paulo",
   /**
-   * Foto de fundo opcional do destaque da tela do músico. Coloque o arquivo (com direito de uso) em
-   * /public/brand e informe o caminho, ex.: "/brand/foto.jpg". Sem foto (null), usa o fundo escuro com a marca do app.
+   * Foto de fundo do destaque da tela do músico (pessoas adorando). Coloque o arquivo em
+   * /public/brand e informe o caminho, ex.: "/brand/adoracao.jpg". Sem foto (null), usa o fundo escuro com a pomba.
    */
-  heroImage: null as string | null,
+  heroImage: "/brand/adoracao.jpg" as string | null,
 } as const;

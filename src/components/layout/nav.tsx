@@ -93,7 +93,7 @@ export function Sidebar({ role, leader, userName, theme, roleText }: { role: "ad
   return (
     <aside className="sticky top-0 hidden h-dvh w-16 shrink-0 flex-col border-r border-border bg-sidebar px-2 pt-4 pb-3 md:flex lg:w-[236px] lg:px-3">
       <Link href="/" aria-label="Escala Louvor — Início" className="mb-5 flex flex-col items-center gap-1.5 rounded-md px-1.5 py-1.5 hover:bg-surface-2 lg:items-start">
-        {/* Coluna de ícones (tablet): só a marca. Barra lateral completa (desktop): marca + nome do app. */}
+        {/* Coluna de ícones (tablet): só a pomba. Barra lateral completa (desktop): logo completo da ADNO. */}
         <span className="lg:hidden">
           <LogoMark size={30} />
         </span>
