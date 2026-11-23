@@ -6,8 +6,16 @@ updates:
       interval: weekly
     open-pull-requests-limit: 5
     groups:
+      # Atualizações pequenas (minor/patch) chegam juntas num PR só.
+      # Versões principais (major) chegam separadas, uma por PR, porque
+      # costumam ter mudanças que quebram e precisam de revisão própria.
       dependencias:
-        patterns: ["*"]
+        update-types: ["minor", "patch"]
+    ignore:
+      # ESLint 10 ainda não é suportado pelo eslint-config-next.
+      # Remover quando o Next.js anunciar suporte.
+      - dependency-name: eslint
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
