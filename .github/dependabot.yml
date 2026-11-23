@@ -16,6 +16,12 @@ updates:
       # Remover quando o Next.js anunciar suporte.
       - dependency-name: eslint
         update-types: ["version-update:semver-major"]
+      # Os tipos do Node acompanham a versão usada no CI e no deploy (Node 22).
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+      # TypeScript 7 (compilador novo) quebrou o CI; migrar em uma tarefa própria.
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
