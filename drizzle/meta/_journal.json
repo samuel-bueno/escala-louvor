@@ -1,0 +1,48 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1794861768252,
+      "tag": "0000_init",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1794922175445,
+      "tag": "0001_convites_e_redefinicao",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1794927316808,
+      "tag": "0002_serie_domingos_e_ensaio",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1794938166156,
+      "tag": "0003_lideres_convidado_repertorio",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1794942787787,
+      "tag": "0004_troca_sugerida",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1794947297614,
+      "tag": "0005_passkeys",
+      "breakpoints": true
+    }
+  ]
+}

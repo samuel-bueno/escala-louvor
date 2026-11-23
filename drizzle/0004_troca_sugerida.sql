@@ -1,0 +1,1 @@
+ALTER TABLE `event_slots` ADD `swap_suggested_participant_id` text REFERENCES participants(id);

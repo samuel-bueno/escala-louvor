@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sem conexão</title>
+<style>
+  :root { color-scheme: light dark; --bg:#f7f5f2; --fg:#1d1b22; --muted:#625d6b; --p:#4338ca }
+  @media (prefers-color-scheme: dark) { :root { --bg:#121117; --fg:#f1eff4; --muted:#aaa4b3; --p:#a5a8fb } }
+  body { margin:0; min-height:100dvh; display:grid; place-items:center; background:var(--bg); color:var(--fg);
+    font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; padding: 24px; box-sizing:border-box }
+  main { max-width: 360px; text-align:center }
+  h1 { font-size: 22px; margin: 16px 0 6px }
+  p { color: var(--muted); margin: 0 0 20px }
+  button { height: 48px; padding: 0 20px; border-radius: 12px; border: 0; background: var(--p); color: #fff; font: inherit; font-weight: 700 }
+</style>
+</head>
+<body>
+<main>
+  <img src="/icons/icon-192.png" width="64" height="64" alt="" style="border-radius:16px">
+  <h1>Você está sem internet</h1>
+  <p>As páginas que você já abriu continuam disponíveis. Salvar escalas, confirmar presença e publicar exigem conexão.</p>
+  <button onclick="location.reload()">Tentar novamente</button>
+</main>
+</body>
+</html>

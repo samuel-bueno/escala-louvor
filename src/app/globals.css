@@ -1,0 +1,346 @@
+@import "tailwindcss";
+
+/*
+ * ESCALA LOUVOR — DESIGN SYSTEM
+ *
+ * Base neutra quente (papel/grafite) + tinta para ações principais
+ * + UM acento próprio: latão (brass), usado com parcimônia
+ *   (item ativo, "próximo", links, progresso, foco).
+ * Categorias de compromisso: culto (latão), ensaio (ardósia), especial (petróleo)
+ * aparecem só como marcadores pequenos.
+ *
+ * Tipografia: Geist (UI) + Geist Mono (horários, datas, tom, BPM, contagens).
+ * Escala: 11 / 12 / 13 / 14 / 15 / 17 / 20 / 24 px. Pesos 400 / 500 / 600.
+ * Raio: 6 (controles pequenos) · 8 (botões, inputs) · 12 (superfícies).
+ */
+:root {
+  --bg: #fbfaf8;
+  --sidebar: #f5f4f1;
+  --surface: #ffffff;
+  --surface-2: #f3f2ef;
+  --surface-3: #e9e7e3;
+  --fg: #1b1a18;
+  --fg-2: #3d3b37;
+  --muted: #6e6b65;
+  --subtle: #9a978f;
+  --border: #e8e6e1;
+  --border-strong: #d5d2cb;
+
+  /* Ação principal = tinta (neutra) */
+  --primary: #1b1a18;
+  --primary-hover: #33312d;
+  --primary-soft: #f0eeea;
+  --on-primary: #fbfaf8;
+
+  /* Acento da marca: latão */
+  --accent: #b4540a;
+  --accent-strong: #9a4708;
+  --accent-soft: #fbefe4;
+
+  --cat-culto: #c8630f;
+  --cat-ensaio: #4a63c9;
+  --cat-especial: #0f7c74;
+
+  --success: #18794e;
+  --success-soft: #e8f5ee;
+  --warning: #a65d00;
+  --warning-soft: #fdf3e1;
+  --danger: #c4302b;
+  --danger-soft: #fceceb;
+  --info: #3a5bc7;
+  --info-soft: #eef2fd;
+
+  --ring: #c8630f;
+  --shadow-pop: 0 1px 2px rgb(27 26 24 / 0.06), 0 8px 24px -6px rgb(27 26 24 / 0.16);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151514;
+    --sidebar: #111110;
+    --surface: #1b1b19;
+    --surface-2: #232321;
+    --surface-3: #2d2c2a;
+    --fg: #edebe7;
+    --fg-2: #cfccc6;
+    --muted: #a19e97;
+    --subtle: #75726c;
+    --border: #2a2927;
+    --border-strong: #3a3936;
+    --primary: #edebe7;
+    --primary-hover: #ffffff;
+    --primary-soft: #262624;
+    --on-primary: #151514;
+    --accent: #f0975a;
+    --accent-strong: #f6ad79;
+    --accent-soft: #33241a;
+    --cat-culto: #f0975a;
+    --cat-ensaio: #8ea2f2;
+    --cat-especial: #4cc4b8;
+    --success: #5cc993;
+    --success-soft: #16291f;
+    --warning: #f1b45c;
+    --warning-soft: #2f2512;
+    --danger: #f2817c;
+    --danger-soft: #331b1a;
+    --info: #8ea2f2;
+    --info-soft: #1d2340;
+    --ring: #f0975a;
+    --shadow-pop: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px -8px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151514;
+  --sidebar: #111110;
+  --surface: #1b1b19;
+  --surface-2: #232321;
+  --surface-3: #2d2c2a;
+  --fg: #edebe7;
+  --fg-2: #cfccc6;
+  --muted: #a19e97;
+  --subtle: #75726c;
+  --border: #2a2927;
+  --border-strong: #3a3936;
+  --primary: #edebe7;
+  --primary-hover: #ffffff;
+  --primary-soft: #262624;
+  --on-primary: #151514;
+  --accent: #f0975a;
+  --accent-strong: #f6ad79;
+  --accent-soft: #33241a;
+  --cat-culto: #f0975a;
+  --cat-ensaio: #8ea2f2;
+  --cat-especial: #4cc4b8;
+  --success: #5cc993;
+  --success-soft: #16291f;
+  --warning: #f1b45c;
+  --warning-soft: #2f2512;
+  --danger: #f2817c;
+  --danger-soft: #331b1a;
+  --info: #8ea2f2;
+  --info-soft: #1d2340;
+  --ring: #f0975a;
+  --shadow-pop: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px -8px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-sidebar: var(--sidebar);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-on-primary: var(--on-primary);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-cat-culto: var(--cat-culto);
+  --color-cat-ensaio: var(--cat-ensaio);
+  --color-cat-especial: var(--cat-especial);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-ring: var(--ring);
+  --shadow-pop: var(--shadow-pop);
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --radius-card: 12px;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: -0.006em;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.018em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  /* iOS: 16px nos campos evita zoom automático */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  @media (min-width: 640px) {
+    input,
+    select,
+    textarea {
+      font-size: 14px;
+    }
+  }
+  button,
+  [role="button"],
+  summary {
+    cursor: pointer;
+  }
+  ::selection {
+    background: var(--accent-soft);
+  }
+  dialog::backdrop {
+    background: rgb(12 12 11 / 0.45);
+  }
+}
+
+@layer components {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  /*
+   * Barra de ações fixa (Salvar/Cancelar). No celular encosta na barra inferior
+   * (56px + safe area) sem faixa de conteúdo no meio; a partir de md flutua.
+   */
+  .action-bar {
+    position: sticky;
+    z-index: 30;
+    bottom: calc(56px + env(safe-area-inset-bottom));
+    margin-inline: -1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    padding: 0.5rem 1rem;
+  }
+  @media (min-width: 640px) {
+    .action-bar {
+      margin-inline: -1.5rem;
+    }
+  }
+  @media (min-width: 768px) {
+    .action-bar {
+      bottom: 1rem;
+      margin-inline: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.5rem 0.5rem 0.5rem 1rem;
+      box-shadow: var(--shadow-pop);
+      background: color-mix(in srgb, var(--surface) 95%, transparent);
+      backdrop-filter: blur(8px);
+    }
+  }
+  /* Link de ação em texto: área de toque confortável sem aumentar o visual. */
+  .link-action {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    margin-inline: -6px;
+    padding-inline: 6px;
+    color: var(--accent);
+    font-size: 13px;
+  }
+  .link-action:hover {
+    text-decoration: underline;
+  }
+  @media (min-width: 768px) {
+    .link-action {
+      min-height: 28px;
+    }
+  }
+  /* Rótulo pequeno em caixa-alta mono: dias, horários, metadados técnicos */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pulse-soft {
+  50% {
+    opacity: 0.5;
+  }
+}
+.anim-rise {
+  animation: rise-in 180ms var(--ease-out-soft) both;
+}
+.anim-sheet {
+  animation: sheet-in 220ms var(--ease-out-soft) both;
+}
+.skeleton {
+  background: var(--surface-2);
+  animation: pulse-soft 1.4s ease-in-out infinite;
+  border-radius: 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Com o teclado virtual aberto, a barra inferior só atrapalha: esconde enquanto há campo em foco. */
+@media (max-width: 767px) {
+  body:has(input:focus-visible, textarea:focus-visible, select:focus-visible) .bottom-nav {
+    display: none;
+  }
+  body:has(input:focus-visible, textarea:focus-visible, select:focus-visible) .action-bar {
+    bottom: 0;
+  }
+}
